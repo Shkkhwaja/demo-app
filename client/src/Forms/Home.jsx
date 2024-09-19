@@ -7,6 +7,8 @@ export default function Home() {
   const [profileData, setProfileData] = useState(null);
   const [postContent, setPostContent] = useState("");
   const [posts, setPosts] = useState([]);
+  const [reload, setReload] = useState(false);
+
 
   function handleLogout() {
     axios
@@ -48,6 +50,7 @@ export default function Home() {
       .then((res) => {
         console.log("Post created:", res.data);
         setPostContent(""); 
+        setReload(!reload);
         navigate("/profile")
       })
       .catch((err) => {
@@ -57,10 +60,10 @@ export default function Home() {
 
   useEffect(() => {
     fetchProfile();
-  }, []);
+  }, [fetchProfile, reload]);
 
   return (
-    <div className="h-auto w-full bg-zinc-950 ">
+    <div className={`${posts.length >= 2 ? "h-auto" : "h-screen"} w-full bg-zinc-950`}>
       <h1 className="text-center text-white text-2xl">Profile</h1>
       <button
         onClick={handleLogout}
@@ -108,10 +111,10 @@ export default function Home() {
         key={post._id}
         className="post w-1/3 p-4 my-4  rounded-md text-white border-[1px] bg-zinc-800 border-zinc-800"
       >
-        <h4 className="text-blue-500 mb-3">@{profileData.username}</h4>
+        <h4 className="text-blue-500 mb-3 underline underline-offset-4">@{profileData.username}</h4>
         <p className="text-sm tracking-tight">{post.content}</p>
         <div className="flex mt-5 gap-4">
-          <a className="text-blue-500">Like {post.likes || 0}</a>
+          <a className="text-blue-500 cursor-pointer">Like {post.like || 0}</a>
           <a className="text-zinc-400">Edit</a>
         </div>
       </div>

@@ -20,10 +20,7 @@ app.use(cookieParser());
 
 // MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/mern-app", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(`${process.env.MONGO_DB}`)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB connection error:", err));
 
@@ -143,7 +140,6 @@ app.get("/profile", isLoggedIn, async (req, res) => {
 });
 
 
-// error on post want to fix -----------------------------------------
 app.post("/post", isLoggedIn, async (req, res) => {
   try {
     const user = await User.findOne({email: req.user.email})

@@ -13,22 +13,21 @@ const app = express();
 
 // Middleware configuration
 const allowedOrigins = [
-  'https://demo-app-two-psi.vercel.app/', // Local development
-  'https://commentdemo.vercel.app' // Your deployed frontend
+  'https://commentdemo.vercel.app', // Your frontend
+  'https://demo-app-two-psi.vercel.app' // Your backend
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
-      return callback(new Error(msg), false);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow access
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block access
     }
-    return callback(null, true);
   },
-  credentials: true // This ensures that cookies are sent with requests
+  credentials: true // Ensure cookies are passed
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

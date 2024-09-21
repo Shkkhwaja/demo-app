@@ -19,7 +19,7 @@ export default function Register() {
       e.preventDefault();
   
       
-      axios.post("http://localhost:3000/register", { name, username, email, password }, {
+      axios.post("http://localhost:3000/register" || "https://demo-app-two-psi.vercel.app/register", { name, username, email, password }, {
         withCredentials: true // This ensures cookies are sent
       }).then((result) => {
           console.log(result);

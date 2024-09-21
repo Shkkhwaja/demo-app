@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware configuration
 const allowedOrigins = [
-  'http://localhost:3000', // Local development
+  'https://demo-app-two-psi.vercel.app/', // Local development
   'https://commentdemo.vercel.app' // Your deployed frontend
 ];
 

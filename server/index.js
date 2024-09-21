@@ -71,9 +71,9 @@ app.post("/register", async (req, res) => {
 
     // Set cookie with token
     res.cookie("token", token, {
-      httpOnly: false,
+      httpOnly: true,
       secure: true, // Set to true in production with HTTPS
-      sameSite: "None",
+      sameSite: "Strict",
     });
 
     res.status(201).send("User registered successfully");
@@ -102,9 +102,9 @@ app.post("/login", async (req, res) => {
 
     // Set cookie with token
     res.cookie("token", token, {
-      httpOnly: false,
+      httpOnly: true,
       secure: true, // Set to true in production with HTTPS
-      sameSite: "None",
+      sameSite: "Strict",
     });
 
     res.status(200).send("Login successful");

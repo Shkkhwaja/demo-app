@@ -117,7 +117,7 @@ app.post("/login", async (req, res) => {
 app.get("/logout", (req, res) => {
   res.cookie("token", "", {
     httpOnly: true,
-    secure: false, // Should be true in production
+    secure: true, // Should be true in production
     sameSite: "lax",
     expires: new Date(0),
   });

@@ -104,7 +104,7 @@ app.post("/login", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: false,
       secure: true, // Set to true in production with HTTPS
-      sameSite: "lax",
+      sameSite: "None",
     });
 
     res.status(200).send("Login successful");

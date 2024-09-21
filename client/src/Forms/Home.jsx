@@ -28,7 +28,7 @@ export default function Home() {
 
   function fetchProfile() {
     axios
-      .get("http://localhost:3000/profile" || "https://demo-app-two-psi.vercel.app/profile", { withCredentials: true })
+      .get("https://demo-app-two-psi.vercel.app/profile", { withCredentials: true })
       .then((response) => {
         setProfileData(response.data.user);
         setPosts(response.data.user.posts);
@@ -43,7 +43,7 @@ export default function Home() {
     e.preventDefault()
     axios
       .post(
-        "http://localhost:3000/post" || "https://demo-app-two-psi.vercel.app/post",
+        "https://demo-app-two-psi.vercel.app/post",
         { content: postContent },
         { withCredentials: true }
       )

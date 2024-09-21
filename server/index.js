@@ -72,8 +72,7 @@ app.post("/register", async (req, res) => {
     // Set cookie with token
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // Set to true in production with HTTPS
-      sameSite: "lax",
+      secure: true, 
     });
 
     res.status(201).send("User registered successfully");

@@ -12,7 +12,7 @@ export default function Home() {
 
   function handleLogout() {
     axios
-      .get("http://localhost:3000/logout" || "https://demo-app-two-psi.vercel.app/logout", { withCredentials: true })
+      .get("https://demo-app-two-psi.vercel.app/logout", { withCredentials: true })
       .then((response) => {
         console.log(response.data);
         navigate("/login");

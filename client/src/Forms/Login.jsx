@@ -12,7 +12,7 @@ export default function Login() {
 
   function loginUser(e){
     e.preventDefault()
-    axios.post("http://localhost:3000/login" || "https://demo-app-two-psi.vercel.app/login", { username, password }, {
+    axios.post("https://demo-app-two-psi.vercel.app/login", { username, password }, {
       withCredentials: true // This ensures cookies are sent
     }).then((result) => {
       console.log(result);

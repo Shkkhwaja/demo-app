@@ -103,7 +103,7 @@ app.post("/login", async (req, res) => {
     // Set cookie with token
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true, // Should be true in production
+      secure: true, // Set to true in production with HTTPS
       sameSite: "lax",
     });
 

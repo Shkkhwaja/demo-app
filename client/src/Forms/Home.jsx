@@ -89,7 +89,7 @@ export default function Home() {
         </h2>
         <form onSubmit={createPost}>
           <textarea
-            value={postContent}
+            value={`${postContent == "" ? "" : postContent}`}
             onChange={(e) => setPostContent(e.target.value)}
             placeholder="Write what's on your mind?"
             className="p-3 w-1/3 text-white outline-none resize-none bg-transparent border-2 border-zinc-800 rounded-md"
